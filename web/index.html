@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BIBLIOAPPI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            max-width: max-content;
+            margin: auto;
+            background-image: url("https://wallpaperaccess.com/full/2964938.jpg");
+        }
+
+        table {
+            border-collapse: collapse;
+            border-radius: 1em;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1em;
+            border: 1px solid black;
+            background: #ddd;
+            border-bottom: 2px solid white;
+        }
+
+        table th {
+            background-color: orange;
+        }
+
+        .cabecera {
+            font-weight: bold;
+            background-color: #dddddd;
+        }
+
+        .titulo {
+            font-weight: bold;
+            background-color: #6ab9cb;
+        }
+
+        .rotulo {
+            font-weight: bold;
+            background-color: #f2deac;
+        }
+
+        .content {
+            max-width: max-content;
+            margin: auto;
+        }
+        .letra {
+            font-family: "Lucida Console",Lucida Handwriting;
+            background-color: rgb(17, 83, 164);
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1 class="letra">API Rest BIBLIOAPP - MySQL Server</h1>
+        <table class="content">
+            <tr>
+                <td class="rotulo">Database</td>
+                <td>biblioapp</td>
+            </tr>
+            <tr>
+                <td class="rotulo">Table</td>
+                <td>eventos</br>libros</br>libro</br>socios</br>prestamos</br>reservas</br>interbibliotecario</td>
+            </tr>
+            <tr>
+                <td class="rotulo">Content-Type</td>
+                <td>application/json</td>
+            </tr>
+            <tr>
+                <td class="rotulo">Accept</td>
+                <td>application/json</td>
+            </tr>
+        </table>
+    </div>
+    <br><br>
+
+    <table>
+        <tr>
+            <th>MÉTODO</th>
+            <th>PATH</th>
+            <th>SEGURIDAD</th>
+        </tr>
+        <!-- LIBROS -->
+        <tr align="center">
+            <td colspan="3" class="titulo">LIBROS</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/libros/all">/biblioapp/v1/libros/all</a></td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libros/todo/{palabraABuscar}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libros/id/{id}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libros/isbn/{isbn}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libros/titulo/{titulo}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libros/autores/{autores}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libros/editorial/{editorial}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libros/anyopublicacion/{anyo}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libros/categoria/{categoria}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libros/disponibles</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libros/disponibles/{palabra}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/libros/disponibles">/biblioapp/v1/libros/disponibles</a></td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/libros/disponiblesReservar">/biblioapp/v1/libros/disponiblesReservar</a></td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/libros</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/libros</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">DELETE</td>
+            <td>/biblioapp/v1/libros/{isbn}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <!-- LIBRO -->
+        <tr align="center">
+            <td colspan="3" class="titulo">LIBRO</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/libro/all">/biblioapp/v1/libro/all</a></td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libro/{isbnLibro}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libro/ndisponibles/{isbnLibro}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libro/ud/isbn/{isbn}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libro/nreservas/{isbnLibro}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libro/reserva/{isbn}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/libro/prestamo/{isbn}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/libro/{isbn}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/libro/</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/libro/disponible/{id}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/libro/disponibleReserva/{id}</td>
+            <td>🔒 Trabajador y Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/libro/noDisponibleReserva/{id}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/libro/noDisponible/{id}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/libro/finaliza/{id}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">DELETE</td>
+            <td>/biblioapp/v1/libro/</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">DELETE</td>
+            <td>/biblioapp/v1/libro/unidad/isbn/{isbn}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">DELETE</td>
+            <td>/biblioapp/v1/libro/isbn/{isbn}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">DELETE</td>
+            <td>/biblioapp/v1/libro/{idLibro}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <!-- EVENTOS -->
+        <tr align="center">
+            <td colspan="3" class="titulo">EVENTOS</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/eventos/all">/biblioapp/v1/eventos/all</a></td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/eventos/fecha/{fechaABuscar}</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/eventos</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/eventos</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">DELETE</td>
+            <td>/biblioapp/v1/eventos/{id}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/eventos</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <!-- Interbibliotecarios -->
+        <tr align="center">
+            <td colspan="3" class="titulo">INTERBIBLIOTECARIO</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/interbibliotecario/all">/biblioapp/v1/interbibliotecario/all</a></td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/interbibliotecario</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/interbibliotecario</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">DELETE</td>
+            <td>/biblioapp/v1/interbibliotecario/{id}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <!-- PRÉSTAMOS -->
+        <tr align="center">
+            <td colspan="3" class="titulo">PRÉSTAMOS</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/prestamos/all">/biblioapp/v1/prestamos/all</a></td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/prestamos/noFinalizados">/biblioapp/v1/prestamos/noFinalizados</a></td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/prestamos/grid/all">/biblioapp/v1/prestamos/grid/all</a></td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/prestamos/noFinalizados">/biblioapp/v1/prestamos/noFinalizados</a></td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/prestamos/socio/{idSocio}</td>
+            <td>🔒 Trabajador y Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/prestamos/fecha/{fecha}/{idSocio}</td>
+            <td>🔒 Trabajador y Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/prestamos/noFinalizadoSocio/{idSocio}</td>
+            <td>🔒 Trabajador y Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/prestamos/{idLibro}/{idSocio}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/prestamos/{idPrestamo}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">DELETE</td>
+            <td>/biblioapp/v1/prestamos/{idPrestamo}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+
+        <!-- RESERVAS -->
+        <tr align="center">
+            <td colspan="3" class="titulo">RESERVAS</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/reservas/all">/biblioapp/v1/reservas/all</a></td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/reservas/grid/all">/biblioapp/v1/reservas/grid/all</a></td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/reservas/socio/{idSocio}</td>
+            <td>🔓 Trabajador y Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/reservas/noFinalizadaSocio/{idSocio}</td>
+            <td>🔓 Trabajador y Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/reservas</td>
+            <td>🔓 Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/reservas/poneNotification/{idReserva}</td>
+            <td>🔓 Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/reservas/quitaNotification/{idReserva}</td>
+            <td>🔓 Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/reservas</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/reservas</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/reservas/add/{idSocio}/{idLibro}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/reservas/{idReserva}/{idLibro}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">DELETE</td>
+            <td>/biblioapp/v1/reservas/{idReserva}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+
+        <!-- SOCIOS -->
+        <tr align="center">
+            <td colspan="3" class="titulo">SOCIOS</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/socio/all">/biblioapp/v1/socio/all</a></td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td><a href="./v1/socio/grid">/biblioapp/v1/socio/grid</a></td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/socio/id/{idSocio}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/socio/dni/{dniSocio}</td>
+            <td>🔒 Trabajador y Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/socio</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/socio</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/socio/resetPassword/{idSocio}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/socio/cambiaPassword/{dni}/{newPass}/{oldPass}</td>
+            <td>🔒 Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/socio/cambiaCorreo/{id}/{correo}</td>
+            <td>🔒 Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/socio/cambiaCategorias/{id}/{categorias}</td>
+            <td>🔒 Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">PUT</td>
+            <td>/biblioapp/v1/socio/cambiaImagenPerfil/{id}/{imagen}</td>
+            <td>🔒 Usuario</td>
+        </tr>
+        <tr>
+            <td class="cabecera">DELETE</td>
+            <td>/biblioapp/v1/socio/{idSocio}</td>
+            <td>🔒 Trabajador</td>
+        </tr>
+
+        <!-- AUTH -->
+        <tr align="center">
+            <td colspan="3" class="titulo">AUTH</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/jwt</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/jwt/check</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">GET</td>
+            <td>/biblioapp/v1/jwt/create-session</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/jwt/auth</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/jwt/logout</td>
+            <td>🔓</td>
+        </tr>
+        <tr>
+            <td class="cabecera">POST</td>
+            <td>/biblioapp/v1/jwt/destroysession</td>
+            <td>🔓</td>
+        </tr>
+    </table>
+</body>
+
+</html>

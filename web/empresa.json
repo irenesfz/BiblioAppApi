@@ -1,0 +1,1289 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "APIREST sobre la BD biblioapp en MySQL Server",
+    "version": "1.0.0",
+    "title": "BiblioApp API"
+  },
+  "host": "localhost:8081",
+  "basePath": "/biblioapp/v1",
+  "tags": [
+    {
+      "name": "libros",
+      "description": "Todos los libros almacenados en la bilioteca"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/auth/destroysession": {
+      "post": {
+        "operationId": "postDestroy",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "operationId": "postLogin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "operationId": "postLogout",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/eventos": {
+      "put": {
+        "operationId": "putEvento",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Eventos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "postEvento",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Eventos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteEvento",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Eventos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/eventos/all": {
+      "get": {
+        "operationId": "getAll",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/eventos/fecha/{fecha}": {
+      "get": {
+        "operationId": "getEventoDestacado",
+        "parameters": [
+          {
+            "name": "fecha",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libro/{idLibro}": {
+      "delete": {
+        "operationId": "eliminaLibro",
+        "parameters": [
+          {
+            "name": "idLibro",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libro/all": {
+      "get": {
+        "operationId": "getAll_1",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libro/{isbn}": {
+      "post": {
+        "operationId": "postLibro",
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libro": {
+      "put": {
+        "operationId": "putLibro",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Libro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/{isbn}": {
+      "delete": {
+        "operationId": "deleteLibro",
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/all": {
+      "get": {
+        "operationId": "getAll_2",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/anyopublicacion/{anyo}": {
+      "get": {
+        "operationId": "getLibroAnyoPublicacion",
+        "parameters": [
+          {
+            "name": "anyo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/autores/{autores}": {
+      "get": {
+        "operationId": "getLibroAutores",
+        "parameters": [
+          {
+            "name": "autores",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/categoria/{categoria}": {
+      "get": {
+        "operationId": "getLibroCategorias",
+        "parameters": [
+          {
+            "name": "categoria",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/editorial/{editorial}": {
+      "get": {
+        "operationId": "getLibroEditorial",
+        "parameters": [
+          {
+            "name": "editorial",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/isbn/{isbn}": {
+      "get": {
+        "operationId": "getLibroIsbn",
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/titulo/{titulo}": {
+      "get": {
+        "operationId": "getLibroTitulo",
+        "parameters": [
+          {
+            "name": "titulo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/todo/{palabra}": {
+      "get": {
+        "operationId": "getLibroTodo",
+        "parameters": [
+          {
+            "name": "palabra",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/disponibles": {
+      "get": {
+        "operationId": "getLibrosDisponibles",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros/disponiblesReservar": {
+      "get": {
+        "operationId": "getLibrosDisponiblesReservar",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/libros": {
+      "put": {
+        "operationId": "putLibro_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Libros"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "postLibro_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Libros"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/prestamos/{idPrestamo}": {
+      "put": {
+        "operationId": "putPrestamo",
+        "parameters": [
+          {
+            "name": "idPrestamo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deletePrestamo",
+        "parameters": [
+          {
+            "name": "idPrestamo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/prestamos/all": {
+      "get": {
+        "operationId": "getAll_3",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/prestamos/noFinalizados": {
+      "get": {
+        "operationId": "getNoFinalizados",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/prestamos/noFinalizadoSocio/{idSocio}": {
+      "get": {
+        "operationId": "getPrestamosNoFinalizadoSocio",
+        "parameters": [
+          {
+            "name": "idSocio",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/prestamos/socio/{idSocio}": {
+      "get": {
+        "operationId": "getPrestamosSocio",
+        "parameters": [
+          {
+            "name": "idSocio",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/prestamos": {
+      "post": {
+        "operationId": "postSocio",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Prestamos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/reservas/{idReserva}": {
+      "put": {
+        "operationId": "finalizaReserva",
+        "parameters": [
+          {
+            "name": "idReserva",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteReservas",
+        "parameters": [
+          {
+            "name": "idReserva",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/reservas/all": {
+      "get": {
+        "operationId": "getAll_4",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/reservas/socio/{idSocio}": {
+      "get": {
+        "operationId": "getAll_5",
+        "parameters": [
+          {
+            "name": "idSocio",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/reservas": {
+      "get": {
+        "operationId": "getSession",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "putReservas",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reservas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "postReservas",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reservas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/socio": {
+      "get": {
+        "operationId": "getSession_1",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "putSocio",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Socios"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "postSocio_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Socios"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteSocio",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Socios"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/socio/all": {
+      "get": {
+        "operationId": "getAllSocio",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/socio/dni/{dni}": {
+      "get": {
+        "operationId": "getSocioDni",
+        "parameters": [
+          {
+            "name": "dni",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/socio/cambiaPassword/{dni}/{newPass}/{oldPass}": {
+      "put": {
+        "operationId": "putContrasenya",
+        "parameters": [
+          {
+            "name": "dni",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "newPass",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "oldPass",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/socio/cambiaImagenYCorreo": {
+      "put": {
+        "operationId": "putImagenEmail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Socios"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/socio/resetPassword/{idSocio}": {
+      "put": {
+        "operationId": "reseteaPassword",
+        "parameters": [
+          {
+            "name": "idSocio",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "rol": {
+            "type": "string"
+          }
+        }
+      },
+      "Eventos": {
+        "required": [
+          "descripcion",
+          "fechaEvento",
+          "fechaPublicacion",
+          "titulo"
+        ],
+        "type": "object",
+        "properties": {
+          "idEvento": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "titulo": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "descripcion": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "imagen": {
+            "maxLength": 2147483647,
+            "minLength": 0,
+            "type": "string"
+          },
+          "fechaPublicacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaEvento": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Libro": {
+        "type": "object",
+        "properties": {
+          "idLibro": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "disponible": {
+            "type": "boolean"
+          },
+          "reservado": {
+            "type": "boolean"
+          },
+          "libros": {
+            "$ref": "#/components/schemas/Libros"
+          },
+          "isbn": {
+            "type": "string"
+          }
+        }
+      },
+      "Libros": {
+        "required": [
+          "isbn"
+        ],
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string"
+          },
+          "autores": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "descripcion": {
+            "maxLength": 1500,
+            "minLength": 0,
+            "type": "string"
+          },
+          "categoria": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "subcategorias": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "editorial": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "idioma": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "imagen": {
+            "maxLength": 2147483647,
+            "minLength": 0,
+            "type": "string"
+          },
+          "libroCollection": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Libro"
+            }
+          },
+          "isbn": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string"
+          },
+          "paginas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "anyoPublicacion": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "Prestamos": {
+        "required": [
+          "fechaPrestamo",
+          "fechaTope"
+        ],
+        "type": "object",
+        "properties": {
+          "idPrestamo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fechaPrestamo": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaTope": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaDevolucion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "libro": {
+            "$ref": "#/components/schemas/Libro"
+          },
+          "idLibro": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "socios": {
+            "$ref": "#/components/schemas/Socios"
+          },
+          "idSocio": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "Socios": {
+        "required": [
+          "apellidos",
+          "categoriasInteres",
+          "contrasenya",
+          "correo",
+          "direccion",
+          "dni",
+          "imagen",
+          "nombre"
+        ],
+        "type": "object",
+        "properties": {
+          "idSocio": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rol": {
+            "maxLength": 13,
+            "minLength": 0,
+            "type": "string"
+          },
+          "dni": {
+            "maxLength": 11,
+            "minLength": 1,
+            "type": "string"
+          },
+          "nombre": {
+            "maxLength": 15,
+            "minLength": 1,
+            "type": "string"
+          },
+          "apellidos": {
+            "maxLength": 45,
+            "minLength": 1,
+            "type": "string"
+          },
+          "direccion": {
+            "maxLength": 15,
+            "minLength": 1,
+            "type": "string"
+          },
+          "correo": {
+            "maxLength": 65,
+            "minLength": 1,
+            "type": "string"
+          },
+          "fechaNacimiento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "imagen": {
+            "maxLength": 2147483647,
+            "minLength": 1,
+            "type": "string"
+          },
+          "contrasenya": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "categoriasInteres": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          }
+        }
+      },
+      "Reservas": {
+        "required": [
+          "fechaReserva"
+        ],
+        "type": "object",
+        "properties": {
+          "idReserva": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fechaReserva": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finalizada": {
+            "type": "boolean"
+          },
+          "idLibro": {
+            "$ref": "#/components/schemas/Libro"
+          },
+          "libroId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idSocio": {
+            "$ref": "#/components/schemas/Socios"
+          },
+          "socioId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    }
+  }
+}

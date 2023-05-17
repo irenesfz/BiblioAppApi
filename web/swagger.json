@@ -1,0 +1,647 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "APIREST sobre la BD biblioapp en MySQL Server",
+    "version": "1.0.0",
+    "title": "BiblioApp API"
+  },
+  "host": "localhost:8081",
+  "basePath": "/biblioapp",
+  "tags": [
+    {
+      "name": "libros",
+      "description": "Todos los libros almacenados en la bilioteca"
+    },
+    {
+      "name": "auth",
+      "description": "Maneja la seguridad de la api"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "El usuario intenta iniciar sesión.",
+        "operationId": "postLogin",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Usuario que quiera iniciar sesión",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito"
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "El usuario cierra sesión.",
+        "operationId": "postLogout",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito"
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/auth/destroysession": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "El usuario destruye la sesión.",
+        "operationId": "postDestroy",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito"
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/v1/libros/all": {
+      "get": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Datos de todos los libros.",
+        "description": "Obtiene los datos de todos los libros de la biblioteca.",
+        "operationId": "getAll",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Libros"
+              }
+            }
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/v1/libros/isbn/{isbn}": {
+      "get": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Datos de los libros que coincidan con la ISBN.",
+        "description": "Busca libros por isbn.",
+        "operationId": "getLibroIsbn",
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "description": "ISBN del libro",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Libros"
+              }
+            }
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/v1/libros/titulo/{titulo}": {
+      "get": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Datos de todos los libros que contengan la cadena de título a buscar.",
+        "description": "Busca libros por título.",
+        "operationId": "getLibroTitulo",
+        "parameters": [
+          {
+            "name": "titulo",
+            "in": "path",
+            "description": "Título del libro",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Libros"
+              }
+            }
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/v1/libros/autores/{autores}": {
+      "get": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Datos de todos los libros que contengan la cadena de autores a buscar.",
+        "description": "Busca libros por título",
+        "operationId": "getLibroAutores",
+        "parameters": [
+          {
+            "name": "autores",
+            "in": "path",
+            "description": "Autor/es del libro",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Libros"
+              }
+            }
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/v1/libros/editorial/{editorial}": {
+      "get": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Datos de todos los libros que contengan la cadena de editorial a buscar.",
+        "description": "Busca libros por título",
+        "operationId": "getLibroEditorial",
+        "parameters": [
+          {
+            "name": "editorial",
+            "in": "path",
+            "description": "editorial del libro",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Libros"
+              }
+            }
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/v1/libros/anyoPublicacion/{anyo}": {
+      "get": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Datos de todos los libros que se hayan publicado en un año en espefícico.",
+        "description": "Busca libros por título",
+        "operationId": "getLibroAnyoPublicacion",
+        "parameters": [
+          {
+            "name": "anyo",
+            "in": "path",
+            "description": "Año de publicación del libro",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Libros"
+              }
+            }
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/v1/libros/categoria/{categoria}": {
+      "get": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Busca libros por categoría.",
+        "description": "Datos de todos los libros que contengan la cadena de categoría a buscar.",
+        "operationId": "getLibroCategorias",
+        "parameters": [
+          {
+            "name": "categoria",
+            "in": "path",
+            "description": "Categoría del libro",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Libros"
+              }
+            }
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/v1/libros/disponibles": {
+      "get": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Busca libros disponibles.",
+        "description": "Datos de todos los libros que se puedan reservar y tomar en préstamo.",
+        "operationId": "getLibrosDisponibles",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Libros"
+              }
+            }
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/v1/libros/disponiblesReservar": {
+      "get": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Busca libros disponibles para reservar.",
+        "description": "Datos de todos los libros que se puedan reservar.",
+        "operationId": "getLibrosDisponiblesReservar",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Libros"
+              }
+            }
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Insertar un libro.",
+        "operationId": "postLibro",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Libro a insertar",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Libros"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito"
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Edita un libro.",
+        "operationId": "putLibro",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Libro a editar",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Libros"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito"
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    },
+    "/v1/libros/{isbn}": {
+      "delete": {
+        "tags": [
+          "libros"
+        ],
+        "summary": "Elimina un libro.",
+        "operationId": "deleteLibro",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "description": "ISBN del libro a eliminar",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acción realizada con éxito"
+          },
+          "204": {
+            "description": "No hay datos que mostrar"
+          },
+          "400": {
+            "description": "Error al procesar la petición"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Usuario": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "rol": {
+          "type": "string"
+        }
+      }
+    },
+    "Libro": {
+      "type": "object",
+      "properties": {
+        "idLibro": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "disponible": {
+          "type": "boolean"
+        },
+        "reservado": {
+          "type": "boolean"
+        },
+        "libros": {
+          "$ref": "#/definitions/Libros"
+        },
+        "isbn": {
+          "type": "string"
+        }
+      }
+    },
+    "Libros": {
+      "required": [
+        "isbn"
+      ],
+      "type": "object",
+      "properties": {
+        "titulo": {
+          "maxLength": 150,
+          "minLength": 0,
+          "type": "string"
+        },
+        "autores": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "descripcion": {
+          "maxLength": 1500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "categoria": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "subcategorias": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "editorial": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idioma": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "imagen": {
+          "maxLength": 2147483647,
+          "minLength": 0,
+          "type": "string"
+        },
+        "libroCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Libro"
+          }
+        },
+        "isbn": {
+          "maxLength": 25,
+          "minLength": 1,
+          "type": "string"
+        },
+        "paginas": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "anyoPublicacion": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    }
+  }
+}
