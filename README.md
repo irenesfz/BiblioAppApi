@@ -74,7 +74,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/libros/all](./v1/libros/all)</td>
+<td>/biblioapp/v1/libros/all</td>
 
 <td>🔓</td>
 
@@ -184,7 +184,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/libros/disponibles](./v1/libros/disponibles)</td>
+<td>/biblioapp/v1/libros/disponibles</td>
 
 <td>🔓</td>
 
@@ -194,7 +194,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/libros/disponiblesReservar](./v1/libros/disponiblesReservar)</td>
+<td>/biblioapp/v1/libros/disponiblesReservar</td>
 
 <td>🔓</td>
 
@@ -240,7 +240,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/libro/all](./v1/libro/all)</td>
+<td>/biblioapp/v1/libro/all</td>
 
 <td>🔓</td>
 
@@ -492,7 +492,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/interbibliotecario/all](./v1/interbibliotecario/all)</td>
+<td>/biblioapp/v1/interbibliotecario/all</td>
 
 <td>🔒 Trabajador</td>
 
@@ -548,7 +548,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/prestamos/noFinalizados](./v1/prestamos/noFinalizados)</td>
+<td>/biblioapp/v1/prestamos/noFinalizados</td>
 
 <td>🔒 Trabajador</td>
 
@@ -558,7 +558,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/prestamos/grid/all](./v1/prestamos/grid/all)</td>
+<td>/biblioapp/v1/prestamos/grid/all</td>
 
 <td>🔒 Trabajador</td>
 
@@ -568,7 +568,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/prestamos/noFinalizados](./v1/prestamos/noFinalizados)</td>
+<td>/biblioapp/v1/prestamos/noFinalizados</td>
 
 <td>🔒 Trabajador</td>
 
@@ -644,7 +644,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/reservas/all](./v1/reservas/all)</td>
+<td>/biblioapp/v1/reservas/all</td>
 
 <td>🔒 Trabajador</td>
 
@@ -654,7 +654,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/reservas/grid/all](./v1/reservas/grid/all)</td>
+<td>/biblioapp/v1/reservas/grid/all</td>
 
 <td>🔒 Trabajador</td>
 
@@ -780,7 +780,7 @@ interbibliotecario</td>
 
 <td class="cabecera">GET</td>
 
-<td>[/biblioapp/v1/socio/grid](./v1/socio/grid)</td>
+<td>/biblioapp/v1/socio/grid</td>
 
 <td>🔒 Trabajador</td>
 
